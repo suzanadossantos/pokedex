@@ -5,6 +5,7 @@ const maxRecords = 1
 const limit = 1
 let offset = 0;
 
+///Funcao que retorna os pokemons na div
 function convertPokemonToLi(pokemon) {
     return `
     <div class="divisao">
@@ -41,6 +42,7 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
+//Implementando outros
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         const newHtml = pokemons.map(convertPokemonToLi).join('')
@@ -50,6 +52,7 @@ function loadPokemonItens(offset, limit) {
 
 loadPokemonItens(offset, limit)
 
+//Botao de buscar mais
 loadMoreButton.addEventListener('click', () => {
     offset += limit
     const qtdRecordsWithNexPage = offset + limit
